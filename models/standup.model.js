@@ -12,3 +12,5 @@ var standupSchema = new Schema({
     default: Date.now
   }
 });
+
+module.exports = mongoose.model('Standup', standupSchema);

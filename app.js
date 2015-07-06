@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-mongoose.connect('mongdb://localhost/mongoo');
+mongoose.connect('mongodb://localhost/mong4node');
 
 var app = express();
 
@@ -18,7 +18,7 @@ var swig = require('swig');
 app.engine('html', swig.renderFile);
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hjs');
+app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
