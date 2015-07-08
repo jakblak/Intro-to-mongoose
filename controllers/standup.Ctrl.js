@@ -39,8 +39,18 @@ exports.create = function(req, res) {
     workToday: req.body.workToday,
     impediment: req.body.impediment
   });
-  entry.save();                 // no error cb
-  res.redirect(301, '/');     // redirect to home page
+  entry.save(function(err) {
+    if(err) {
+      var errMsg = 'Sorry, there was an error saving ' + err;
+      res.render('newnote', {
+        title: 'Standup - new note (error)',
+        message: errMsg
+      });
+    } else {
+        console.log('Stand-up meeting note was saved!');
+        res.redirect(301, '/');     // redirect to home page
+    }
+  });
 };
 
 exports.getNote = function(req, res) {
